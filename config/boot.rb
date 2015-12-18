@@ -1,6 +1,6 @@
 require "bunny"
 
-$bunny_connection = Bunny.new(ENV['AMQP_URL'] || 'amqp://127.0.0.1:5672', automatically_recover: false )
+$bunny_connection = Bunny.new(ENV['AMQP_URL'] || ENV['CLOUDAMQP_URL'] || 'amqp://127.0.0.1:5672', automatically_recover: false )
 $bunny_connection.start
 
 $bunny_channel   = $bunny_connection.create_channel
